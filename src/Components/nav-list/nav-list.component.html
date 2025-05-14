@@ -1,5 +1,18 @@
 <nav>
-  <a routerLink="/wellcome" routerLinkActive="active">Wellcome</a>
-  <a routerLink="/starShipsList" routerLinkActive="active">StarShips</a>
-  <a routerLink="/starShip/:id" routerLinkActive="active">StarShipCart</a>
+  <div
+    class="nav-link"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a routerLink="/wellcome">WELLCOME</a>
+    <div class="active-indicator"></div>
+  </div>
+  <div class="nav-link" routerLinkActive="active">
+    <a routerLink="/starShipsList">STARSHIPS</a>
+    <div class="active-indicator"></div>
+  </div>
+  <div class="nav-link" routerLinkActive="active">
+    <a routerLink="/starShip/:id">STARSHIP-DITAILS</a>
+    <div class="active-indicator"></div>
+  </div>
 </nav>
