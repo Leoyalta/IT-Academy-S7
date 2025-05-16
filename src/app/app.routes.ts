@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
-import { WellcomeComponent } from '../Components/wellcome/wellcome.component';
-import { StarShipsListComponent } from '../Components/star-ships-list/star-ships-list.component';
-import { StarShipCartComponent } from '../Components/star-ship-cart/star-ship-cart.component';
-import { NotFoundPageComponent } from '../Components/not-found-page/not-found-page.component';
+import { WellcomeComponent } from './сomponents/wellcome/wellcome.component';
+import { NotFoundPageComponent } from './сomponents/not-found-page/not-found-page.component';
+import { ActorsListComponent } from './сomponents/actors-list/actors-list.component';
+import { ActorProfileComponent } from './сomponents/actor-profile/actor-profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'wellcome', pathMatch: 'full' },
+
   { path: 'wellcome', component: WellcomeComponent },
-  { path: 'starShipsList', component: StarShipsListComponent },
-  { path: 'starShip/:id', component: StarShipCartComponent },
+  { path: 'actorsList', component: ActorsListComponent },
+  { path: 'actors/:id', component: ActorProfileComponent },
+
   { path: '**', component: NotFoundPageComponent },
 ];
