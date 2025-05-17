@@ -1,5 +1,6 @@
 <section class="actors-list-section">
   <h1>Hello, all your favorite actors are here!</h1>
+  <button (click)="getAllPerson()">GetData</button>
 
   @if (errorMessage) {
   <div class="error-message">
@@ -8,8 +9,8 @@
   }
 
   <ul class="actors-list">
-    @for (actor of actors; track actor.name) {
-    <li class="actor-card">
+    @for (actor of actors; track actor.id) {
+    <li class="actor-card" (click)="goToActorProfile(actor.id)">
       @if (actor.profile_path) {
       <div>
         <img
