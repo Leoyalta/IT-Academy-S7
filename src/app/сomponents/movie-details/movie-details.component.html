@@ -1,0 +1,27 @@
+<section class="movie-details">
+  @if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+  } @else if (movie) {
+
+  <div class="details-box">
+    <img
+      class="details-img"
+      [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path"
+      [alt]="movie.title"
+    />
+    <div class="profile-info">
+      <h2>{{ movie.title }}</h2>
+      <p><strong>Release date:</strong> {{ movie.release_date }}</p>
+      <p><strong>Popularity:</strong> {{ movie.popularity }}</p>
+      <p><strong>Rating:</strong> {{ movie.vote_average }}/10</p>
+      <p class="overview">{{ movie.overview }}</p>
+    </div>
+  </div>
+  }
+</section>
+<div class="show-box" (mouseenter)="showCast = true">
+  <p>Put cursor here if you want to see the cast of this movie</p>
+  @if (showCast === true) {
+  <app-cast />
+  }
+</div>

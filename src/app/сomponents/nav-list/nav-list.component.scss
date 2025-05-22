@@ -29,6 +29,14 @@ nav {
   color: #ffffff;
 }
 
+.log-box {
+  display: flex;
+  gap: 12px;
+  margin-left: 1vw;
+
+  justify-self: flex-end;
+}
+
 .active-indicator {
   display: none;
   width: 100%;

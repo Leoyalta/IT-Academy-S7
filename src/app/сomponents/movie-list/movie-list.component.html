@@ -1,0 +1,26 @@
+<section class="movies-list-section">
+  <h1>Hello, all your favorite movies are here!</h1>
+
+  @if (errorMessage) {
+  <div class="error-message">
+    {{ errorMessage }}
+  </div>
+  }
+
+  <ul class="movies-list">
+    @for (movie of movies; track movie.id) {
+    <li class="actor-card" (click)="goToMovieProfile(movie.id)">
+      @if (movie.poster_path) {
+      <div>
+        <img
+          class="actor-img"
+          [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
+          [alt]="movie.title"
+        />
+        <h2 class="actor-name">{{ movie.title }}</h2>
+      </div>
+      }
+    </li>
+    }
+  </ul>
+</section>

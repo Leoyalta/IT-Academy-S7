@@ -44,6 +44,8 @@ export class ActorsListComponent implements OnInit {
             !this.actors.some((existing) => existing.id === actor.id)
         );
         this.actors = [...this.actors, ...newActors];
+        console.log(this.actors);
+
         this.currentPage++;
         this.errorMessage = null;
       }
@@ -52,12 +54,5 @@ export class ActorsListComponent implements OnInit {
 
   goToActorProfile(id: number): void {
     this.router.navigate(['/actors', id]);
-  }
-
-  getAllPerson(): void {
-    this.actorsService.getInitData(this.currentPage).subscribe((data) => {
-      this.currentPage++;
-      console.log(data);
-    });
   }
 }

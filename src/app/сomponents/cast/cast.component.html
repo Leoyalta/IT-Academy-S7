@@ -1,0 +1,27 @@
+<section class="cast-box">
+  @if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+  } @else if (loading) {
+  <div class="cast-grid cast-skeleton-grid">
+    @for (item of skelrtonCart; track item) {
+    <div class="skeleton-card actor-card"></div>
+    }
+  </div>
+  } @else if (cast) {
+  <div class="cast-grid">
+    @for (actor of cast; track actor.id) {
+    <div class="actor-card">
+      <img
+        class="actor-img"
+        [src]="'https://image.tmdb.org/t/p/w185' + actor.profile_path"
+        [alt]="actor.name"
+      />
+      <div class="profile-info">
+        <strong>{{ actor.name }}</strong>
+        <p class="character">as {{ actor.character }}</p>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</section>
