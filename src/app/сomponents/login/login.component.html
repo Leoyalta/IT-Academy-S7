@@ -1,27 +1,28 @@
 <section class="login-section">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="input-box">
-      <label for="userEmail">Enter your email:</label>
+      <label for="email">Email</label>
       <input
+        id="email"
+        type="email"
+        formControlName="email"
         class="text-inputs"
-        type="text"
-        formControlName="userEmail"
-        id="userEmail"
       />
-      @if (userEmail?.invalid && userEmail?.touched) {
-      <div class="error-message">Enter a valid email address.</div>
+      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+      <div class="error-message">Please enter a valid email.</div>
       }
     </div>
 
     <div class="input-box">
-      <label for="userPasswords"> Enter your password:</label>
+      <label for="password">Password</label>
       <input
+        id="password"
+        type="password"
+        formControlName="password"
         class="text-inputs"
-        type="text"
-        formControlName="userPassword"
-        id="userPasswords"
       />
-      @if (userPassword?.invalid && userPassword?.touched) {
+      @if ( loginForm.get('password')?.invalid &&
+      loginForm.get('password')?.touched ) {
       <div class="error-message">Password must be at least 6 characters.</div>
       }
     </div>

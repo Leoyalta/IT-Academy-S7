@@ -35,7 +35,6 @@ export class MovieDetailsComponent implements OnInit {
         this.errorMessage = data.error;
       } else {
         this.movie = data;
-        console.log(this.movie);
       }
     });
   }

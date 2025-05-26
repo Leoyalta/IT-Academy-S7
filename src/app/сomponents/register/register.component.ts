@@ -1,70 +1,59 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { Component, inject } from '@angular/core';
 import {
+  FormBuilder,
   ReactiveFormsModule,
-  FormGroup,
-  FormControl,
   Validators,
   ValidatorFn,
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  registerForm = new FormGroup(
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  registerForm = this.fb.nonNullable.group(
     {
-      userName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
-      userEmail: new FormControl('', [Validators.required, Validators.email]),
-      userPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
-      repeatPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
-      consent: new FormControl(false, Validators.requiredTrue),
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repeatPassword: ['', [Validators.required]],
+      consent: [false, Validators.requiredTrue],
     },
     { validators: this.passwordsMatchValidator() }
   );
 
   passwordsMatchValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const form = control as FormGroup;
-      const password = form.get('userPassword')?.value;
-      const repeat = form.get('repeatPassword')?.value;
-
+    return (group: AbstractControl): ValidationErrors | null => {
+      const password = group.get('password')?.value;
+      const repeat = group.get('repeatPassword')?.value;
       return password === repeat ? null : { passwordsMismatch: true };
     };
   }
 
-  onSubmit() {
-    console.log('Form value:', this.registerForm.value);
-    console.log(`Form status - is valid:`, this.registerForm.valid);
-    console.log(`Form controls`, this.registerForm.controls);
-  }
-  get userName() {
-    return this.registerForm.get('userName');
-  }
-  get userEmail() {
-    return this.registerForm.get('userEmail');
-  }
-  get userPassword() {
-    return this.registerForm.get('userPassword');
-  }
-  get repeatPassword() {
-    return this.registerForm.get('repeatPassword');
-  }
+  onSubmit(): void {
+    if (!this.registerForm.valid) return;
 
-  get consent() {
-    return this.registerForm.get('consent');
+    const { email, password } = this.registerForm.getRawValue();
+
+    this.authService.register(email, password).subscribe({
+      next: (user) => {
+        console.log('✅ Registered:', user);
+        this.router.navigateByUrl('/moviesList');
+      },
+      error: (err) => {
+        console.error('❌ Registration failed:', err.message);
+      },
+    });
   }
 }

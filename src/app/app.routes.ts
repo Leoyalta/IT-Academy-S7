@@ -7,6 +7,7 @@ import { MovieListComponent } from './сomponents/movie-list/movie-list.componen
 import { MovieDetailsComponent } from './сomponents/movie-details/movie-details.component';
 import { LoginComponent } from './сomponents/login/login.component';
 import { RegisterComponent } from './сomponents/register/register.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: 'wellcome', pathMatch: 'full' },
 

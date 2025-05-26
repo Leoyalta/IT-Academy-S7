@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActorServiceService } from '../../services/actors-service/actors-service.service';
 import { Router } from '@angular/router';
-import { Actor, Movie, ActorsCast } from '../../models/actors';
+import { Movie, ActorsCast } from '../../models/actors';
 
 @Component({
   selector: 'app-movie-list',
@@ -60,7 +60,7 @@ export class MovieListComponent implements OnInit {
   getMovieById(movieId: number) {
     this.actorsService.getMovieDetails(movieId).subscribe((data) => {
       if ('error' in data) {
-        console.error(data.error);
+        this.errorMessage = data.error;
       } else {
         this.movie = data;
       }
@@ -70,10 +70,9 @@ export class MovieListComponent implements OnInit {
   getCast(movieId: number) {
     this.actorsService.getMovieCast(movieId).subscribe((data) => {
       if ('error' in data) {
-        console.error(data.error);
+        this.errorMessage = data.error;
       } else {
         this.cast = data;
-        console.log(this.cast);
       }
     });
   }

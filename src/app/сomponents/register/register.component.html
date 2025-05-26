@@ -1,59 +1,67 @@
 <section class="register-section">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- Name -->
     <div class="input-box">
-      <label for="userName">Enter your name</label>
-      <input
-        class="text-inputs"
-        type="text"
-        formControlName="userName"
-        id="userName"
-      />
-      @if (userName?.invalid && userName?.touched) {
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" class="text-inputs" />
+      @if (registerForm.get('name')?.invalid &&
+      registerForm.get('name')?.touched) {
       <div class="error-message">Name must be at least 2 characters.</div>
       }
     </div>
+
+    <!-- Email -->
     <div class="input-box">
-      <label for="userEmail">Enter your email:</label>
+      <label for="email">Email</label>
       <input
+        id="email"
+        type="email"
+        formControlName="email"
         class="text-inputs"
-        type="text"
-        formControlName="userEmail"
-        id="userEmail"
       />
-      @if (userEmail?.invalid && userEmail?.touched) {
-      <div class="error-message">Enter a valid email address.</div>
+      @if (registerForm.get('email')?.invalid &&
+      registerForm.get('email')?.touched) {
+      <div class="error-message">Please enter a valid email.</div>
       }
     </div>
 
+    <!-- Password -->
     <div class="input-box">
-      <label for="userPasswords"> Enter your password:</label>
+      <label for="password">Password</label>
       <input
+        id="password"
+        type="password"
+        formControlName="password"
         class="text-inputs"
-        type="text"
-        formControlName="userPassword"
-        id="userPasswords"
       />
-      @if (userPassword?.invalid && userPassword?.touched) {
+      @if (registerForm.get('password')?.invalid &&
+      registerForm.get('password')?.touched) {
       <div class="error-message">Password must be at least 6 characters.</div>
       }
     </div>
+
+    <!-- Repeat Password -->
     <div class="input-box">
-      <label for="repeatPassword"> Enter your password:</label>
+      <label for="repeatPassword">Repeat Password</label>
       <input
-        class="text-inputs"
-        type="text"
-        formControlName="repeatPassword"
         id="repeatPassword"
+        type="password"
+        formControlName="repeatPassword"
+        class="text-inputs"
       />
-      @if (repeatPassword?.invalid && repeatPassword?.touched) {
-      <div class="error-message">Passwords must match.</div>
+      @if (registerForm.errors?.['passwordsMismatch'] &&
+      registerForm.get('repeatPassword')?.touched) {
+      <div class="error-message">Passwords do not match.</div>
       }
     </div>
+
+    <!-- Consent -->
     <div class="check">
-      <label for="consent">I agree with conditions ...</label>
       <input type="checkbox" formControlName="consent" id="consent" />
-      @if (consent?.invalid && consent?.touched) {
-      <div class="error-message">You must agree to continue.</div>
+      <label for="consent">I agree with the terms.</label>
+      @if (registerForm.get('consent')?.invalid &&
+      registerForm.get('consent')?.touched) {
+      <div class="error-message">You must agree to proceed.</div>
       }
     </div>
 

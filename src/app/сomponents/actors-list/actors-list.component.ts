@@ -44,7 +44,6 @@ export class ActorsListComponent implements OnInit {
             !this.actors.some((existing) => existing.id === actor.id)
         );
         this.actors = [...this.actors, ...newActors];
-        console.log(this.actors);
 
         this.currentPage++;
         this.errorMessage = null;

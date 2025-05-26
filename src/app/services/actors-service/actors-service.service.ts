@@ -8,13 +8,14 @@ import {
   MovieDetails,
   ActorsCast,
 } from '../../models/actors';
+import { environment } from '../../../assets/environments/environments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ActorServiceService {
-  private apiKey = '6feffdf1325dd81330370b8a8ddb4c06';
-  private baseUrl = 'https://api.themoviedb.org/3';
+  private apiKey = environment.tmdb.apiKey;
+  private baseUrl = environment.tmdb.baseUrl;
 
   constructor(private http: HttpClient) {}
 

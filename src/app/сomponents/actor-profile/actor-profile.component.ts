@@ -33,7 +33,6 @@ export class ActorProfileComponent implements OnInit {
         this.errorMessage = data.error;
       } else {
         this.actor = data;
-        console.log(this.actor);
       }
     });
   }
