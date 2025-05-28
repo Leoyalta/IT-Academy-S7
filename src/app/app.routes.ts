@@ -1,5 +1,8 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { WellcomeComponent } from './сomponents/wellcome/wellcome.component';
+import { AuthGuard } from './guards/authGuard';
+
+import { WelcomeComponent } from './сomponents/welcome/welcome.component';
 import { NotFoundPageComponent } from './сomponents/not-found-page/not-found-page.component';
 import { ActorsListComponent } from './сomponents/actors-list/actors-list.component';
 import { ActorProfileComponent } from './сomponents/actor-profile/actor-profile.component';
@@ -9,16 +12,34 @@ import { LoginComponent } from './сomponents/login/login.component';
 import { RegisterComponent } from './сomponents/register/register.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'wellcome', pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 
-  { path: 'wellcome', component: WellcomeComponent },
-  { path: 'actorsList', component: ActorsListComponent },
-  { path: 'moviesList', component: MovieListComponent },
-  { path: 'actors/:id', component: ActorProfileComponent },
-  { path: 'movie/:id', component: MovieDetailsComponent },
-
+  // Public
+  { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
+  // Protected
+  {
+    path: 'moviesList',
+    component: MovieListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'actorsList',
+    component: ActorsListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'movie/:id',
+    component: MovieDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'actors/:id',
+    component: ActorProfileComponent,
+    canActivate: [AuthGuard],
+  },
 
   { path: '**', component: NotFoundPageComponent },
 ];

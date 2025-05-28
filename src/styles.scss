@@ -1,8 +1,5 @@
+@use "@ngxpert/hot-toast/styles";
 @import "normalize.css";
-#toast-container {
-  z-index: 99999 !important;
-}
-
 :root {
   /* Fonts */
   --font-body: "Montserrat", sans-serif;
@@ -126,3 +123,5 @@ p {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
+
+/* Importing @ngxpert/hot-toast SCSS file. */

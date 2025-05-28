@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,7 @@ export class RegisterComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private toast = inject(HotToastService);
 
   registerForm = this.fb.nonNullable.group(
     {
@@ -46,14 +48,16 @@ export class RegisterComponent {
 
     const { email, password } = this.registerForm.getRawValue();
 
-    this.authService.register(email, password).subscribe({
-      next: (user) => {
-        console.log('✅ Registered:', user);
+    this.authService.register(email, password).subscribe((result) => {
+      if ('error' in result) {
+        this.toast.error(` Registration failed: ${result.error}`, {
+          position: 'top-right',
+          duration: 3000,
+        });
+      } else {
+        this.toast.success('Welcome to the galaxy! ✨');
         this.router.navigateByUrl('/moviesList');
-      },
-      error: (err) => {
-        console.error('❌ Registration failed:', err.message);
-      },
+      }
     });
   }
 }

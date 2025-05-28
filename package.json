@@ -19,6 +19,8 @@
     "@angular/platform-browser": "^19.2.12",
     "@angular/platform-browser-dynamic": "^19.2.12",
     "@angular/router": "^19.2.12",
+    "@ngneat/overview": "6.1.1",
+    "@ngxpert/hot-toast": "^4.2.0",
     "firebase": "^11.8.1",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.8.0",

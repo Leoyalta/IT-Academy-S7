@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private toast = inject(HotToastService);
 
   loginForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -25,15 +27,13 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.getRawValue();
 
-    this.authService.login(email, password).subscribe({
-      next: (userCredential) => {
-        console.log('✅ Logged in:', userCredential);
+    this.authService.login(email, password).subscribe((result) => {
+      if ('error' in result) {
+        this.toast.error(`Login failed:  ${result.error}`);
+      } else {
+        this.toast.success('Welcome back!');
         this.router.navigateByUrl('/moviesList');
-      },
-      error: (error) => {
-        console.error('❌ Login failed:', error);
-        alert(error.message);
-      },
+      }
     });
   }
 }

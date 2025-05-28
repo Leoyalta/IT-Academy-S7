@@ -3,15 +3,15 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-wellcome',
+  selector: 'app-welcome',
   imports: [CommonModule],
-  templateUrl: './wellcome.component.html',
-  styleUrl: './wellcome.component.scss',
+  templateUrl: './welcome.component.html',
+  styleUrl: './welcome.component.scss',
 })
-export class WellcomeComponent {
+export class WelcomeComponent {
   constructor(private router: Router) {}
   goToActorProfile(): void {
-    this.router.navigate(['/actorsList']);
+    this.router.navigate(['/moviesList']);
     console.log(123);
   }
 }
