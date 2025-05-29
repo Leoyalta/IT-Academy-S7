@@ -29,9 +29,9 @@ Incluye lógica de autenticación, protección de rutas, carga dinámica de dato
 
 2. Entra en el directorio del proyecto:
 
-3. Instala las dependencias:
-
    - cd IT-Academy-S7-StarWars
+
+3. Instala las dependencias:
 
    - npm install
 
