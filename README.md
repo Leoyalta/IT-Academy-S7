@@ -50,21 +50,6 @@ Incluye lógica de autenticación, protección de rutas, carga dinámica de dato
 - ✅ Navegación dinámica y estructura standalone.
 - ✅ Diseño responsive y moderno con SCSS.
 
-## Estructura del Proyecto
-
-src/
-├── app/
-│ ├── components/
-│ ├── services/
-│ ├── models/
-│ ├── guards/
-│ ├── app.routes.ts
-│ └── app.config.ts
-├── assets/
-│ └── environments/
-│ ├── environment.ts
-│ └── environment.example.ts
-
 ## Demo
 
 Puedes ver el proyecto en acción aquí:
