@@ -1,4 +1,3 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/authGuard';
 
@@ -14,12 +13,10 @@ import { RegisterComponent } from './сomponents/register/register.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 
-  // Public
   { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  // Protected
   {
     path: 'moviesList',
     component: MovieListComponent,

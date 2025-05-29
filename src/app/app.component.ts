@@ -9,5 +9,5 @@ import { NavListComponent } from './сomponents/nav-list/nav-list.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'starships-app';
+  title = 'movies-app';
 }

@@ -1,59 +1,72 @@
-# StarshipsApp
+# Slider App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+## Descripción
 
-## Development server
+Este proyecto es una aplicación web desarrollada con Angular 19 y componentes standalone, que permite a los usuarios:
+• Registrarse e iniciar sesión (con Firebase Auth),
+• Navegar por una lista de películas y actores populares (con datos de TheMovieDB),
+• Visualizar detalles individuales,
+• Disfrutar de una interfaz moderna y responsive con navegación protegida.
 
-To start a local development server, run:
+Incluye lógica de autenticación, protección de rutas, carga dinámica de datos, scroll infinito y notificaciones visuales con HotToast.
 
-```bash
-ng serve
-```
+## Tecnologías Utilizadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Angular 19**: Framework moderno para el desarrollo de aplicaciones web.
+- **TypeScript**: Lenguaje de programación con tipado estático.
+- **Firebase Authentication**: Para registro, login y logout de usuarios.
+- **TMDB API**: Fuente de datos de películas y actores.
+- **SCSS**: Preprocesador de CSS que permite el uso de variables, anidamiento y otras características avanzadas.
+- **Reactive Forms**: Módulo de Angular para construir formularios reactivos con validaciones y control total del estado.
+- **Angular Router**: Navegación dinámica con rutas protegidas.
+- **Jasmine + Karma**: Sistema de pruebas unitarias.
 
-## Code scaffolding
+## Instrucciones de Instalación y Ejecución
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clona el repositorio:
 
-```bash
-ng generate component component-name
-```
+   - git clone https://github.com/Leoyalta/IT-Academy-S7
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Entra en el directorio del proyecto:
 
-```bash
-ng generate --help
-```
+3. Instala las dependencias:
 
-## Building
+   - cd IT-Academy-S7-StarWars
 
-To build the project run:
+   - npm install
 
-```bash
-ng build
-```
+4. Inicia el servidor de desarrollo:
+   - npm run start
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Características Principales
 
-## Running unit tests
+- ✅ Registro y autenticación con Firebase (email/contraseña + Google login).
+- ✅ Protección de rutas para contenidos privados.
+- ✅ Visualización de películas y actores desde TheMovieDB API.
+- ✅ Detalles individuales de cada película o actor.
+- ✅ Scroll infinito en la lista de películas.
+- ✅ Form validation avanzada con mensajes de error amigables.
+- ✅ Notificaciones tipo toast en eventos importantes.
+- ✅ Navegación dinámica y estructura standalone.
+- ✅ Diseño responsive y moderno con SCSS.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Estructura del Proyecto
 
-```bash
-ng test
-```
+src/
+├── app/
+│ ├── components/
+│ ├── services/
+│ ├── models/
+│ ├── guards/
+│ ├── app.routes.ts
+│ └── app.config.ts
+├── assets/
+│ └── environments/
+│ ├── environment.ts
+│ └── environment.example.ts
 
-## Running end-to-end tests
+## Demo
 
-For end-to-end (e2e) testing, run:
+Puedes ver el proyecto en acción aquí:
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- https://it-academy-s7-star-wars.vercel.app

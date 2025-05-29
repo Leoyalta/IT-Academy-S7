@@ -55,7 +55,7 @@ export class RegisterComponent {
           duration: 3000,
         });
       } else {
-        this.toast.success('Welcome to the galaxy! ✨');
+        this.toast.success('Welcome to the movie-app! ✨');
         this.router.navigateByUrl('/moviesList');
       }
     });
