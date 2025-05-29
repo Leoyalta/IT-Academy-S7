@@ -29,7 +29,7 @@ Incluye lógica de autenticación, protección de rutas, carga dinámica de dato
 
 2. Entra en el directorio del proyecto:
 
-   - cd IT-Academy-S7-StarWars
+   - cd IT-Academy-S7
 
 3. Instala las dependencias:
 
