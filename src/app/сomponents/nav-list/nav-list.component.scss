@@ -1,8 +1,18 @@
-nav {
+.nav-box {
   display: flex;
-  justify-content: center;
-  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
   padding: 12px;
+  width: 100%;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-link {
@@ -29,12 +39,10 @@ nav {
   color: #ffffff;
 }
 
-.log-box {
+.auth-actions {
+  margin-left: auto;
   display: flex;
   gap: 12px;
-  margin-left: 1vw;
-
-  justify-self: flex-end;
 }
 
 .active-indicator {
