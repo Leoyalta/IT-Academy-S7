@@ -65,12 +65,31 @@
   transform: scaleX(1);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  .nav-box {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-links,
+  .auth-actions {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .nav-link a {
-    padding: 8px;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  .auth-actions {
+    margin-left: 0;
   }
 }
-
 @media (min-width: 1024px) {
   .nav-link a {
     font-size: 20px;
